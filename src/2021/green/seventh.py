@@ -120,7 +120,3 @@ def main():
         for char in row:
             temp = temp + char
         print(temp)
-    
-main()
-
-
