@@ -1,20 +1,23 @@
-import math as math
-def main():
-    l = int(input())
-    r = int(input())
-    nums = list()
-    for number in range(l, r+1):
-        number = str(number)
-        digits = len(number)
-        total = 0
-        for digit in number:
-            digit = int(digit)
-            total += digit**digits
-        if math.isclose(int(number), total):
-            nums.append(number)
+import math
 
-    print(len(nums))
-    for num in nums:
-        print(num)
+
+def main():
+	l = int(input())
+	r = int(input())
+	nums = []
+	for number in range(l, r + 1):
+		_number_ = str(number)
+		digits = len(_number_)
+		total = 0
+		for digit in _number_:
+			_digit_ = int(digit)
+			total += _digit_**digits
+		if math.isclose(int(number), total):
+			nums.append(_number_)
+
+	print(len(nums))
+	for num in nums:
+		print(num)
+
 
 main()
