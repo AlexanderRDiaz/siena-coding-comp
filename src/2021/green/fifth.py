@@ -17,6 +17,3 @@ def solution():
     print(len(nums))
     for num in nums:
         print(num)
-
-
-solution()

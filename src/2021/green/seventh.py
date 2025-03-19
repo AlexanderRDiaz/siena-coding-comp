@@ -1,6 +1,11 @@
 from copy import deepcopy
 
 
+# This problem potentially has issues with its second example!
+# If you use this as practice be cautious that example two has multiple solutions!
+# 2 have been verified, of the six this solution returns.
+
+
 # Resolve hints into easy to work with data structures.
 def getHints():
     top = list(input().upper())
@@ -127,8 +132,3 @@ def solution():
                 )  # It is important to learn about shallow and deep copying lists/dictionaries.
                 newPuzzle[rowNum][columnNum] = newPuzzle[rowNum][columnNum] + letters[index]
                 traverse(index + 1, neighborPosition, newPuzzle)
-
-
-# This problem potentially has issues with its second example!
-# If you use this as practice be cautious that two has multiple solutions!
-# 2 have been verified, of the six this solution returns.

@@ -18,6 +18,3 @@ def solution():
         print(roman + ' NOT ROMAN-EQUIVALENT')
     else:
         print(roman + ' ROMAN-EQUIVALENT')
-
-
-solution()

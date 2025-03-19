@@ -37,6 +37,3 @@ def solution():  # noqa: PLR0912
         else:
             _order_ = _order_ + ' ' + str(n + 1)
     print(_order_)
-
-
-solution()
