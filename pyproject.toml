@@ -52,6 +52,6 @@ isort = { length-sort = true, combine-as-imports = true, from-first = true, line
 flake8-builtins = { strict-checking = true }
 
 [tool.ruff.format]
-indent-style = "tab"
+indent-style = "space"
 quote-style = "single"
 skip-magic-trailing-comma = false
