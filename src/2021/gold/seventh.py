@@ -39,8 +39,8 @@ def solution():
         else:
             u, l = getPreviousNodes(position)
             uValue, lValue = values.get(u), values.get(l)
-            lcm = math.lcm(uValue, lValue)
-            numerator = (lcm // uValue) - (lcm // lValue)
+            lcm = math.lcm(uValue, lValue)  # pyright: ignore
+            numerator = (lcm // uValue) - (lcm // lValue)  # pyright: ignore
             denominator = lcm // numerator
             values.update({position: denominator})
 
@@ -50,6 +50,3 @@ def solution():
 
     traverse()
     print(f'1/{values.get((x, y))}')
-
-
-solution()
