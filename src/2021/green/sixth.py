@@ -1,4 +1,4 @@
-# This problem is complex, and uses tree traversal & recursion.
+# This problem is complex, and uses tree recursion.
 # Examples are inside of the extras folder.
 def solution():
     digits = '123456789'

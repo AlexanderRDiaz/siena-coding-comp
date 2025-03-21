@@ -5,6 +5,9 @@ from copy import deepcopy
 # If you use this as practice be cautious that example two has multiple solutions!
 # 2 have been verified, of the six this solution returns.
 
+# This problem is complex, and uses tree recursion.
+# Examples are inside of the extras folder.
+
 
 # Resolve hints into easy to work with data structures.
 def getHints():
@@ -99,8 +102,6 @@ def resolveHints(pos, _rowHints_, _columnHints_, _diagonalHints_):
     return allHints
 
 
-# This problem is complex, and uses recursion and tree traversal.
-# Examples are in extras, for both recursion and tree traversal.
 def solution():
     _rowHints_, _columnHints_, _diagonalHints_ = getHints()
     _puzzle_ = [['' for _ in range(5)] for _ in range(5)]

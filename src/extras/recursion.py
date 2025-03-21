@@ -1,6 +1,7 @@
 # Examples that make recursive backtracking easier to digest.
 
 # Fibonacci solution using recursive backtracking.
+# This a tree recursive function, because it calls itself more than once.
 def fibonacci(n):
     if n <= 1:
         return 1
@@ -8,7 +9,8 @@ def fibonacci(n):
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 
-# A more complex example of tree traversal & recursion.
+# A more complex example of recursion, which calls itself more than once.
+# This is known as tree recursion
 def getPermutations(characters):
     combinations = []
 
