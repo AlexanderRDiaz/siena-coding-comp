@@ -1,6 +1,4 @@
-def solution():
-    _number_ = input()
-
+def arabicToRoman(_number_: str) -> str:
     num = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
     sym = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L', 'XC', 'C', 'CD', 'D', 'CM', 'M']
 
@@ -15,6 +13,11 @@ def solution():
         i -= 1
 
     if len(roman) == len(_number_):
-        print(roman + ' NOT ROMAN-EQUIVALENT')
+        return f'{roman} NOT ROMAN-EQUIVALENT'
     else:
-        print(roman + ' ROMAN-EQUIVALENT')
+        return f'{roman} ROMAN-EQUIVALENT'
+
+
+if __name__ == '__main__':
+    number = input()
+    print(arabicToRoman(number))

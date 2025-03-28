@@ -1,10 +1,10 @@
 import math
 
 
-def solution():
-    l, r = tuple(int(n) for n in input().split(' '))
+def getSuperpowerNumbers(start, end):
     nums = []
-    for number in range(l, r + 1):
+
+    for number in range(start, end + 1):
         _number_ = str(number)
         digits = len(_number_)
         total = 0
@@ -14,6 +14,12 @@ def solution():
         if math.isclose(int(number), total):
             nums.append(_number_)
 
-    print(len(nums))
-    for num in nums:
-        print(num)
+    return nums
+
+
+if __name__ == '__main__':
+    start, end = tuple(int(n) for n in input().split(' '))
+    numbers = getSuperpowerNumbers(start, end)
+    print(len(numbers))
+    for n in numbers:
+        print(n)

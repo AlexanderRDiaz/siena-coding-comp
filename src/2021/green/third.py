@@ -1,19 +1,7 @@
-def solution():  # noqa: PLR0912
-    info = input().split(' ')
-
-    speeds = []
-    starts = []
-
-    for i in range(6):
-        v = int(info[i])
-        if i % 2 == 0:
-            speeds.append(v)
-        else:
-            starts.append(v)
-
+def getOrder(info: list[int]) -> str:  # noqa: PLR0912
     times = []
 
-    for speed, start in zip(speeds, starts, strict=False):
+    for speed, start in zip(*[iter(info)] * 2, strict=False):
         time = (100 - start) / speed
         times.append(time)
 
@@ -21,19 +9,17 @@ def solution():  # noqa: PLR0912
 
     for runnerNum, runnerTime in enumerate(times):
         pos = 0
-        for _num_ in order:
-            compTime = times[_num_]
-            if runnerTime > compTime:
+        for competitorNum in order:
+            competitorTime = times[competitorNum]
+            if (runnerTime > competitorTime) or (
+                runnerTime == competitorTime and competitorNum < runnerNum
+            ):
                 pos += 1
-            elif runnerTime == compTime:
-                if _num_ < runnerNum:
-                    pos += 1
         order.insert(pos, runnerNum)
 
-    _order_ = ''
-    for n in order:
-        if len(_order_) == 0:
-            _order_ = _order_ + str(n + 1)
-        else:
-            _order_ = _order_ + ' ' + str(n + 1)
-    print(_order_)
+    return ''.join([str(runner + 1) + ' ' for runner in order])
+
+
+if __name__ == '__main__':
+    info = [int(n) for n in input().split()]
+    print(getOrder(info))

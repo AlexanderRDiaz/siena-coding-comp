@@ -1,38 +1,52 @@
-# This problem is complex, and uses tree recursion.
-# Examples are inside of the extras folder.
-def solution():
-    digits = '123456789'
+def evalExpression(expression: str, solutions: list[str], target: int, index: int = 0) -> None:
+    if expression.find('_') == -1:
+        if eval(expression) == target:
+            solutions.append(expression)
+        return
+
+    for i in range(index, len(expression)):
+        if expression[i] != '_':
+            continue
+
+        evalExpression(expression[:i] + '+' + expression[i + 1 :], solutions, target, i + 1)
+        evalExpression(expression[:i] + '-' + expression[i + 1 :], solutions, target, i + 1)
+
+
+def createExpressions(
+    expressions,
+    expression: str = '',
+    digits: str = '123456789',
+    index: int = 0,
+) -> None:
+    if index == len(digits):
+        expressions.append(expression)
+
+    for i in range(index, len(digits)):
+        number = digits[index : i + 1]
+        if index == 0:
+            createExpressions(i + 1, number)
+        else:
+            createExpressions(i + 1, expression + '_' + number)
+
+
+def getExpressions(target: int) -> list[str]:
     target = int(input())
+
+    expressions = []
     solutions = []
 
-    def evalExpression(expression, index=0):
-        if expression.find('_') == -1:
-            if eval(expression) == target:
-                solutions.append(expression)
-            return
-
-        for i in range(index, len(expression)):
-            if expression[i] != '_':
-                continue
-
-            evalExpression(expression[:i] + '+' + expression[i + 1 :], i + 1)
-            evalExpression(expression[:i] + '-' + expression[i + 1 :], i + 1)
-
-    def genExpression(index=0, expression=''):
-        if index == len(digits):
-            evalExpression(expression)
-
-        for i in range(index, len(digits)):
-            number = digits[index : i + 1]
-            if index == 0:
-                genExpression(i + 1, number)
-            else:
-                genExpression(i + 1, expression + '_' + number)
-
-    genExpression()
+    createExpressions(expressions)
+    for expression in expressions:
+        evalExpression(expression, solutions, target)
 
     if len(solutions) == 0:
-        print('NO SOLUTIONS FOUND')
+        return ['NO SOLUTIONS FOUND']
     else:
-        for sol in solutions:
-            print(sol)
+        return solutions
+
+
+if __name__ == '__main__':
+    target = int(input())
+    result = getExpressions(target)
+    for string in result:
+        print(string)
