@@ -1,35 +1,26 @@
-import sys
 from copy import deepcopy
 
-"""
-7 7 5
-5 2 2 4
-6 0 1 4
-1 1 2 3
-0 3 6 4
-1 5 3 3
-"""
-
-temp_points = [
+# rows, columns, k = 7, 7, 5
+"""temp_points = [
     [5, 2, 2, 4],
     [6, 0, 1, 4],
     [1, 1, 2, 3],
     [0, 3, 6, 4],
     [1, 5, 3, 3],
-]
+]"""
 
-# rows, columns, k = [int(v) for v in input().split(' ')]
-rows, columns, k = 7, 7, 5
+rows, columns, k = [int(v) for v in input().split(' ')]
 grid: list[list[int | str]] = [[0 for _ in range(columns)] for _ in range(rows)]
 starts = [(0, 0)]
 ends = [(0, 0)]
 for i in range(1, k + 1):
-    # s1, e1, s2, e2 = [int(v) for v in input().split(' ')]
-    s1, e1, s2, e2 = temp_points[i - 1]
+    s1, e1, s2, e2 = [int(v) for v in input().split(' ')]
+    # s1, e1, s2, e2 = temp_points[i - 1]
     grid[s1][e1] = i
     grid[s2][e2] = i
     starts.append((s1, e1))
     ends.append((s2, e2))
+starts.append((0, 0))
 
 dirs = ((1, 0), (0, 1), (-1, 0), (0, -1))
 solutions = []
@@ -52,6 +43,9 @@ def formatGrid(_grid: list[list[int | str]]):
 
 
 def recurse(pos: tuple[int, int], cur: int):
+    if cur > k:
+        return solutions.append(deepcopy(grid))
+
     for i in range(len(dirs)):
         x, y = addPos(pos, dirs[i])
         if x < 0 or x >= rows or y < 0 or y >= columns:
@@ -61,9 +55,6 @@ def recurse(pos: tuple[int, int], cur: int):
 
         grid[x][y] = chr(cur + ord('a') - 1)
         if connectionCheck((x, y), cur):
-            if cur + 1 > k:
-                solutions.append(deepcopy(grid))
-                continue
             recurse(starts[cur + 1], cur + 1)
         else:
             recurse((x, y), cur)
@@ -73,6 +64,6 @@ def recurse(pos: tuple[int, int], cur: int):
 recurse(starts[1], 1)
 
 if len(solutions) == 0:
-    print('no solutions')
+    print('NO SOLUTION')
 for sol in solutions:
     print(formatGrid(sol))
