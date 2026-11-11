@@ -1,4 +1,5 @@
 *.env
+.ruff_cache
 
 # Created by .ignore support plugin (hsz.mobi)
 ### Diff template

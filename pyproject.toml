@@ -5,16 +5,8 @@ description = "Tips/Solutions for the Siena HS Coding Competition."
 readme = "README.md"
 requires-python = ">=3.13"
 license = "MIT"
-
-[dependency-groups]
-lint = ["ruff", "pyright"]
-format = ["ruff"]
-typechecking = ["pyright"]
-all = [
-    { include-group = "lint" },
-    { include-group = "format" },
-    { include-group = "typechecking" },
-]
+[project.optional-dependencies]
+dev = ["ruff", "pyright"]
 
 [tool.ruff]
 line-length = 100

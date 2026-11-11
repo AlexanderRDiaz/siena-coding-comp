@@ -1,5 +1,6 @@
 from copy import deepcopy
 
+
 # rows, columns, k = 7, 7, 5
 """temp_points = [
     [5, 2, 2, 4],
