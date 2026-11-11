@@ -3,7 +3,7 @@ name = "siena-coding-comp"
 version = "0.0.1"
 description = "Tips/Solutions for the Siena HS Coding Competition."
 readme = "README.md"
-require-python = ">=3.13"
+requires-python = ">=3.13"
 license = "MIT"
 
 [dependency-groups]
@@ -20,10 +20,6 @@ all = [
 line-length = 100
 target-version = "py313"
 fix = true
-
-[tool.ruff.analyze]
-detect-string-imports = true
-direction = "Dependencies"
 
 [tool.ruff.lint]
 select = [
